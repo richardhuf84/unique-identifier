@@ -1,13 +1,13 @@
 import {
   INDIVIDUAL_CHARACTER_REGEXP,
   CHARACTER_RANGE_REGEXP,
-  uniqueIdentifier
-} from './unique-identifier';
+  generateUniqueIdentifier
+} from './generateUniqueIdentifier';
 
 describe('uniqueIdentifier', () => {
   it('should be comprised of 5 random strings, separated by a hyphen', () => {
-    const ID = uniqueIdentifier();
-    const parts = ID.split('-');
+    console.log('*******/n', generateUniqueIdentifier())
+    const parts = generateUniqueIdentifier().split('-');
     expect(parts).toHaveLength(5);
     expect(parts[0]).toHaveLength(8)
     expect(parts[1]).toHaveLength(4)
@@ -24,15 +24,14 @@ describe('uniqueIdentifier', () => {
   ${3} | ${4}  | ${'fourth'}
   ${4} | ${12} | ${'fifth'}
   `
-    (`the $extra segment should be $expected characters in length`, ({ index, expected }) => {
-      const ID = uniqueIdentifier();
-      const parts = ID.split('-');
+    (`the $extra segment should be $expected characters in length`, ({ index, expected, extra }) => {
+      const parts = generateUniqueIdentifier().split('-');
+      console.log(parts, index)
       expect(parts[index]).toHaveLength(expected)
     });
 
   it('each segment should be comprised of lowercase letters, uppercase letters or numbers 0-9', () => {
-    const ID = uniqueIdentifier();
-    const parts = ID.split('-');
+    const parts = generateUniqueIdentifier().split('-');
     parts.forEach(part => {
       expect(CHARACTER_RANGE_REGEXP.test(part)).toBeTruthy();
     })
