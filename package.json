@@ -37,7 +37,7 @@
   "nx": {
     "includedScripts": []
   },
-  "type": "commonjs",
+  "type": "module",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts"
 }
