@@ -23,4 +23,5 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: yarn install
+      - run: yarn nx reset    
       - run: yarn test
